@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.content.pm.PackageManager.GET_RESOLVED_FILTER;
 
@@ -46,7 +47,7 @@ public class MainActivity extends Activity {
     }
 
     private void errout(String paramString) {
-        this.errorTv.append(paramString + "\n");
+        errorTv.append(paramString + "\n");
     }
 
     @SuppressLint("WrongConstant")
@@ -75,18 +76,23 @@ public class MainActivity extends Activity {
         if ((arrayOfSignature == null) || (arrayOfSignature.length == 0)) {
             errout("signs is null");
         }
-        int i = arrayOfSignature.length;
-        for (int j = 0; j < i; j++) {
-            stdout(MD5.getMessageDigest(arrayOfSignature[j].toByteArray()));
+        if (arrayOfSignature != null) {
+            for (Signature signature : arrayOfSignature) {
+                stdout(MD5.getMessageDigest(signature.toByteArray()));
+            }
+        } else {
+            if (errorTv.getText().toString().trim().contains("NameNotFoundException")) {
+                Toast.makeText(this, "请先安装输入包名的apk的正式版再试！", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
     private void showDialog() {
         AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
         localBuilder.setCancelable(false);
-        localBuilder.setTitle("获取签名信息").setMessage("请输入apk包名");
-        localBuilder.setPositiveButton("取消", null);
-        localBuilder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+        localBuilder.setTitle("获取签名信息").setMessage("请输入apk包名获取签名信息");
+        localBuilder.setPositiveButton("确定", null);
+        localBuilder.setNegativeButton("退出", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                 finish();
