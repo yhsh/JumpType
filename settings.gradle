@@ -1,1 +1,1 @@
-include ':app', ':moneydemo', ':WeChatSignDemo'
+include ':app', ':moneydemo', ':WeChatSignDemo', ':OpenWeChatApp'

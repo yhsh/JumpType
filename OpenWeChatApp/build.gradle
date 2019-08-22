@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('F:\\Android3.4.2\\Project3.4.2\\JumpType\\OpenWeChatApp\\WeChatSign')
+            storePassword '123456'
+            keyAlias = 'yhsh'
+            keyPassword '123456'
+        }
+        release {
+            storeFile file('F:\\Android3.4.2\\Project3.4.2\\JumpType\\OpenWeChatApp\\WeChatSign')
+            storePassword '123456'
+            keyAlias = 'yhsh'
+            keyPassword '123456'
+        }
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+
+    defaultConfig {
+        applicationId "com.xiayiye.openwechatapp"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'
+//    implementation 'androidx.appcompat:appcompat:1.0.2'
+}
