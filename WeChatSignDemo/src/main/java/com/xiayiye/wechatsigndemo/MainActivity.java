@@ -90,9 +90,9 @@ public class MainActivity extends Activity {
     private void showDialog() {
         AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
         localBuilder.setCancelable(false);
-        localBuilder.setTitle("获取签名信息").setMessage("请输入apk包名获取签名信息");
+        localBuilder.setTitle("声明").setMessage("此工具仅用于获取安装到手机的第三方应用签名信息,点击 \"确定\"  继续操作,点击 \"取消\" 退出程序。");
         localBuilder.setPositiveButton("确定", null);
-        localBuilder.setNegativeButton("退出", new DialogInterface.OnClickListener() {
+        localBuilder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                 finish();
