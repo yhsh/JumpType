@@ -13,10 +13,10 @@
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_margin="15dp"
         android:gravity="center"
         android:textIsSelectable="true"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_error"
